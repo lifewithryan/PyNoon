@@ -24,6 +24,10 @@ cowboy = pygame.image.load(RESOURCE_DIR + 'cowboy.png')
 
 
 def load_sound(name):
+    """
+    completely stolen from a tutorial here:
+    http://pygame.org/docs/tut/chimp/ChimpLineByLine.html
+    """
     class NoneSound:
         def play(self): pass
     if not pygame.mixer:
