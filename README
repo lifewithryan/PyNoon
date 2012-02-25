@@ -9,4 +9,8 @@ Death animation of cowboy
 Better sounds, though these are funny :)
 Configuration menu's etc to change screen size, cowboy reaction time, etc
 
+
 Lotsa stuff!
+
+
+OH YEAH:  run python core/core.py, wait for the whistle sound -- I really worked hard on it -- and then press any key.  Cowboy will pop up at a random moment in a random spot on the "screen".  If you miss, you die, screen turns red, he laughs, hit a key to reset.
