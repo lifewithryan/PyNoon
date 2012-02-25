@@ -1,0 +1,7 @@
+I'm just leanring PyGame.  I used to play a game many years ago on Windows 3.1 withi this little cowboy who'd pop up on the screen and you'd have to shoot him before he shot you.
+
+This is my python version of that game and my attempt at learning pygame.  In its current state, its procedural, not object oriented but that will be next :)
+
+Plus, the cowboy doesn't really shoot you yet...if you miss, you die, he laughs...eventually I'll get him to pull the trigger and have some fresher graphics, etc.
+
+Anyway...blah blah blah
