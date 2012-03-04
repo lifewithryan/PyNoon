@@ -1,16 +1,19 @@
-I'm just leanring PyGame.  I used to play a game many years ago on Windows 3.1 withi this little cowboy who'd pop up on the screen and you'd have to shoot him before he shot you.
+I'm just learning PyGame.  I used to play a game many years ago on Windows 3.1 withi this little cowboy who'd pop up on the screen and you'd have to shoot him before he shot you.
 
-This is my python version of that game and my attempt at learning pygame.  In its current state, its procedural, not object oriented but that will be next :)
+This is my python version of that game and my attempt at learning pygame.
 
-Plus, the cowboy doesn't really shoot you yet...if you miss, you die, he laughs...eventually I'll get him to pull the trigger and have some fresher graphics, etc.
+The cowboy doesn't really shoot you yet...if you miss, you die, he laughs...eventually I'll get him to pull the trigger and have some fresher graphics, etc.
 
 I want to add stats
 Death animation of cowboy
 Better sounds, though these are funny :)
+Better Graphics
 Configuration menu's etc to change screen size, cowboy reaction time, etc
-
 
 Lotsa stuff!
 
 
-OH YEAH:  run python core/core.py, wait for the whistle sound -- I really worked hard on it -- and then press any key.  Cowboy will pop up at a random moment in a random spot on the "screen".  If you miss, you die, screen turns red, he laughs, hit a key to reset.
+OH YEAH:  run python pynoon/pynoon.py, wait for the whistle sound -- I really worked hard on it -- and then press any key.  Cowboy will pop up at a random moment in a random spot on the "screen".  If you miss, you die, screen turns red, he laughs, hit a key to reset.
+
+
+I've left my original "pre"totype (core.py) in the code so you can see the evolution.  I'm sure my OO version is still rather unstable as I'm not doing error checking but that being said, its so simple, I've not crashed it yet.
