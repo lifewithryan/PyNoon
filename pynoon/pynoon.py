@@ -31,11 +31,16 @@ class Game(object):
         self.bang = pygame.mixer.Sound(RESOURCE_DIR + 'bang.wav') 
         self.whistle = pygame.mixer.Sound(RESOURCE_DIR + 'whistle.wav' )
         self.laugh = pygame.mixer.Sound(RESOURCE_DIR + 'laugh.wav') 
+        self.beltch = pygame.mixer.Sound(RESOURCE_DIR + 'beltch.wav')
+        self.egg = ""
+        self.cowboy_is_showing = False
 
     def screen_color(self, color):
+        self.cowboy_is_showing = False #if we're refilling the screen, cowboy is not active
         self.screen.fill(color)
 
     def reset(self):
+        self.cowboy_is_showing = False
         self.screen_color(WHITE)
 
     def random_pos(self):
@@ -46,6 +51,10 @@ class Game(object):
         return random.random() * 4
 
     def start(self):
+        """
+        Perhaps this is where I'd prompt for player name
+        Read config inputs, maybe show current record of player, etc
+        """
         self.whistle.play()
         self.reset()
         return self
@@ -55,14 +64,20 @@ class Game(object):
         time.sleep(self.rand_time())
         self.draw_em.play()
         self.screen.blit(self.cowboy, self.random_pos())
-
+        self.cowboy_is_showing = True
 
     def hit_target(self, click_pos):
         color = self.screen.get_at(click_pos)
-        if color != WHITE:
+        if color != WHITE and self.cowboy_is_showing:
             return True
         else:
             return False
+
+    def easter(self, key):
+        self.egg = self.egg + key
+        if "burp" in self.egg:
+            self.beltch.play()
+            self.egg = ""
 
     def run(self):
         while True:
@@ -70,21 +85,32 @@ class Game(object):
                 if event.type == QUIT:
                     sys.exit()
                 elif event.type == KEYDOWN:
-                    self.show_cowboy()
-                elif event.type == MOUSEBUTTONDOWN:
-                    self.bang.play()
-                    position = event.pos
-                    if self.hit_target(position):
-                        time.sleep(.5)
-                        self.got_me.play()
-                        self.screen_color(GREEN)
-                        print "Target Hit"
+                    # put my beltch easter egg in here
+                    if event.key == K_b:
+                        self.easter('b')
+                    elif event.key == K_u:
+                        self.easter('u')
+                    elif event.key == K_r:
+                        self.easter('r')
+                    elif event.key == K_p:
+                        self.easter('p')
                     else:
-                        self.gunshot.play()
-                        time.sleep(1)
-                        self.laugh.play()
-                        self.screen_color(RED)
-                        print "Missed me!"
+                        self.show_cowboy()
+                elif event.type == MOUSEBUTTONDOWN:
+                    if self.cowboy_is_showing:
+                        self.bang.play()
+                        position = event.pos
+                        if self.hit_target(position):
+                            time.sleep(.5)
+                            self.got_me.play()
+                            self.screen_color(GREEN)
+                        else:
+                            self.gunshot.play()
+                            time.sleep(1)
+                            self.laugh.play()
+                            self.screen_color(RED)
+                    else:
+                        self.bang.play()
 
             pygame.display.update()
             self.game_clock.tick(30)
