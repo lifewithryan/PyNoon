@@ -8,7 +8,7 @@ import time
 pygame.init()
 
 DIRNAME = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
-RESOURCE_DIR = os.path.join(DIRNAME, '../resources/')
+RESOURCE_DIR = os.path.join(DIRNAME, 'resources/')
 RED = pygame.Color(255, 0, 0)
 GREEN  = pygame.Color(0, 255, 0)
 BLUE = pygame.Color(0, 0, 255)
@@ -30,8 +30,10 @@ def load_sound(name):
     """
     class NoneSound:
         def play(self): pass
+    
     if not pygame.mixer:
         return NoneSound()
+        
     fullname = os.path.join('data', name)
     try:
         sound = pygame.mixer.Sound(fullname)

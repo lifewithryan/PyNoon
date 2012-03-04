@@ -5,61 +5,32 @@ from pygame.locals import *
 import random
 import time
 
-DIRNAME = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
-RESOURCE_DIR = os.path.join(DIRNAME, '../resources/')
+DIRNAME = os.path.dirname(__file__)
+RESOURCE_DIR = os.path.join(DIRNAME, 'resources/')
 RED = pygame.Color(255, 0, 0)
 GREEN  = pygame.Color(0, 255, 0)
 BLUE = pygame.Color(0, 0, 255)
 WHITE = pygame.Color(255, 255, 255)
 
-
+pygame.init()
 
 class Game(object):
     """
     An object to manage the game
     """
     def __init__(self):
+        
         self.screen = pygame.display.set_mode((1024, 768))
         self.game_clock = pygame.time.Clock()
         pygame.display.set_caption("PyNoon")
+        # probably shouldn't load the images init...dunno why, but seems like a bad idea? gut check?
         self.cowboy = pygame.image.load(RESOURCE_DIR + 'cowboy.png')
-        self.gunshot = None
-        self.got_me = None
-        self.draw_em = None
-        self.bang = None
-        self.whistle = None
-        self.laugh = None
-
-    
-    #def load_sound(self, name):
-    #    """
-    #    completely stolen from a tutorial here:
-    #    http://pygame.org/docs/tut/chimp/ChimpLineByLine.html
-    #    """
-    #    class NoneSound:
-    #        def play(self): pass
-    #    
-    #    if not pygame.mixer:
-    #        return NoneSound()
-    #    
-    #    fullname = os.path.join('data', name)
-#
-    #    try:
-    #        sound = pygame.mixer.Sound(RESOURCE_DIR + fullname)
-    #    except pygame.error, message:
-    #        print 'Cannot load sound:', wav
-    #        raise SystemExit, message
-    #    return sound
-
-    def load_sound(self, name):
-        fullname = os.path.join('data', name)
-        try:
-            sound = pygame.mixer.Sound(fullname)
-        except pygame.error, message:
-            print message
-            print 'Cannot load sound:', wav
-            raise SystemExit, message
-        return sound
+        self.gunshot = pygame.mixer.Sound(RESOURCE_DIR + 'pow.wav')
+        self.got_me = pygame.mixer.Sound(RESOURCE_DIR + 'ya_got_me.wav') 
+        self.draw_em = pygame.mixer.Sound(RESOURCE_DIR + 'draw.wav') 
+        self.bang = pygame.mixer.Sound(RESOURCE_DIR + 'bang.wav') 
+        self.whistle = pygame.mixer.Sound(RESOURCE_DIR + 'whistle.wav' )
+        self.laugh = pygame.mixer.Sound(RESOURCE_DIR + 'laugh.wav') 
 
     def screen_color(self, color):
         self.screen.fill(color)
@@ -69,28 +40,20 @@ class Game(object):
 
     def random_pos(self):
         pos = (random.randint(0,540), random.randint(0, 400))
-        print pos
         return pos
 
     def rand_time(self):
         return random.random() * 4
 
     def start(self):
-        # load the sounds first
-        print "Loading sounds from " + RESOURCE_DIR
-        self.gunshot = self.load_sound(RESOURCE_DIR + 'pow.wav')
-        self.got_me = self.load_sound(RESOURCE_DIR + 'got_me.wav')
-        self.draw_em = self.load_sound(RESOURCE_DIR + 'draw_em.wav')
-        self.bang = self.load_sound(RESOURCE_DIR + 'bang.wav')
-        self.whistle = self.load_sound(RESOURCE_DIR + 'whistle.wav')
-        self.laugh = self.load_sound(RESOURCE_DIR + 'laugh.wav')
+        self.whistle.play()
         self.reset()
         return self
 
     def show_cowboy(self):
         self.reset()
         time.sleep(self.rand_time())
-        self.draw_em.play() 
+        self.draw_em.play()
         self.screen.blit(self.cowboy, self.random_pos())
 
 
