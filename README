@@ -4,11 +4,11 @@ This is my python version of that game and my attempt at learning pygame.
 
 The cowboy doesn't really shoot you yet...if you miss, you die, he laughs...eventually I'll get him to pull the trigger and have some fresher graphics, etc.
 
-I want to add stats
-Death animation of cowboy
-Better sounds, though these are funny :)
-Better Graphics
-Configuration menu's etc to change screen size, cowboy reaction time, etc
+* I want to add stats
+* Death animation of cowboy
+* Better sounds, though these are funny :)
+* Better Graphics
+* Configuration menu's etc to change screen size, cowboy reaction time, etc
 
 Lotsa stuff!
 
