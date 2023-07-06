@@ -2,8 +2,9 @@ I'm just learning PyGame.  I used to play a game many years ago on Windows 3.1 w
 
 This is my python version of that game and my attempt at learning pygame.
 
-The cowboy doesn't really shoot you yet...if you miss, you die, he laughs...eventually I'll get him to pull the trigger and have some fresher graphics, etc.
+The cowboy will shot you now if you do not shoot him within the alotted time...if you miss, you die, he laughs...
 
+TODO:
 * I want to add stats
 * Death animation of cowboy
 * Better sounds, though these are funny :)
